@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>PixiAnalogStick</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+  <script src="../dist/pixi-analog-stick.js"></script>
+</head>
+<body>
+  <div id="myCanvas" />
+  <script>
+    PIXI.utils.skipHello();
+
+    // レンダラーの設定
+    var wrapper = document.getElementById('myCanvas');
+    var renderer = PIXI.autoDetectRenderer(
+      wrapper.offsetWidth,
+      wrapper.offsetHeight,
+    );
+    renderer.plugins.interaction.moveWhenInside = true;
+    wrapper.appendChild(renderer.view);
+
+    // ステージ
+    var stage = new PIXI.Container();
+
+    // アナログスティック
+    var analogStick = new PixiAnalogStick();
+    analogStick.x = 100;
+    analogStick.y = 100;
+    analogStick.on('move', (e) => { console.info('move', e); });
+    analogStick.on('release', (e) => { console.info('release!'); });
+    stage.addChild(analogStick);
+
+    var tick = function () {
+      requestAnimationFrame(tick);
+      renderer.render(stage);
+    };
+    tick();
+
+  </script>
+</body>
+</html>
