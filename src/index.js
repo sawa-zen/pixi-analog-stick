@@ -14,12 +14,12 @@ const EVENT_NAME = {
   TOUCH_END_OUTSIDE: 'touchendoutside',
 };
 
-const PUBLIC_EVENT_NAME = {
+export const PUBLIC_EVENT_NAME = {
   MOVE: 'move',
   RELEASE: 'release',
 };
 
-class AnalogStick extends PIXI.Container {
+class PixiAnalogStick extends PIXI.Container {
   constructor() {
     super();
 
@@ -212,4 +212,4 @@ class AnalogStick extends PIXI.Container {
   }
 }
 
-export default AnalogStick;
+export default PixiAnalogStick;

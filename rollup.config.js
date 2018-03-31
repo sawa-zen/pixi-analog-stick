@@ -7,7 +7,7 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/pixi-analog-stick.js',
-    format: 'iife',
+    format: 'umd',
     name: 'PixiAnalogStick',
   },
   external: ['pixi.js'],
@@ -18,6 +18,6 @@ export default {
     resolve(),
     babel(),
     commonjs(),
-    uglify(),
+    // uglify(),
   ],
 };
