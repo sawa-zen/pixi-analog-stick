@@ -14,7 +14,7 @@ const EVENT_NAME = {
   TOUCH_END_OUTSIDE: 'touchendoutside',
 };
 
-export const PUBLIC_EVENT_NAME = {
+const PUBLIC_EVENT_NAME = {
   MOVE: 'move',
   RELEASE: 'release',
 };
