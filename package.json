@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/pixi-analog-stick.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c --environment BUILD:production",
     "watch": "npm run build -- -w"
   },
   "repository": {

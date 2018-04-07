@@ -3,6 +3,16 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
 
+let plugins = [
+  resolve(),
+  babel(),
+  commonjs(),
+];
+
+if (process.env.BUILD === 'production') {
+  plugins.push(uglify());
+}
+
 export default {
   input: 'src/index.js',
   output: {
@@ -14,10 +24,5 @@ export default {
   watch: {
     include: 'src/**',
   },
-  plugins: [
-    resolve(),
-    babel(),
-    commonjs(),
-    // uglify(),
-  ],
+  plugins: plugins,
 };
