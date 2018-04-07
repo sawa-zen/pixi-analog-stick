@@ -1,11 +1,12 @@
 {
   "name": "pixi-analog-stick",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/pixi-analog-stick.js",
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
-    "watch": "npm run build -- -w"
+    "watch": "rollup -c -w",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
