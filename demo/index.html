@@ -24,7 +24,7 @@
     var stage = new PIXI.Container();
 
     // アナログスティック
-    var analogStick = new PixiAnalogStick.default();
+    var analogStick = new PixiAnalogStick();
     analogStick.x = 100;
     analogStick.y = 100;
     analogStick.on('move', (e) => { console.info('move', e); });

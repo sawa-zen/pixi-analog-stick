@@ -2,6 +2,8 @@
 
 The aim of the project is to create an easy to use analog stick library for PIXI.js.
 
+![capture](./capture.gif)
+
 #### Install
 
 ```
