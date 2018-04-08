@@ -49,6 +49,10 @@ export default Container;
 
   Use to remove events.
 
+- ** reset()
+
+  Reset stick position.
+
 - **dispose()**
 
   Use to dispose pixi-analog-stick.

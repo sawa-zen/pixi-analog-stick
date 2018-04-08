@@ -2,8 +2,6 @@ import * as PIXI from 'pixi.js';
 import Victor from 'victor';
 
 const EVENT_NAME = {
-  MOVE_STICK:        'moveStick',
-  RELEASE_STICK:     'releaseStick',
   MOUSE_DOWN:        'mousedown',
   MOUSE_UP:          'mouseup',
   MOUSE_MOVE:        'mousemove',
@@ -81,13 +79,16 @@ class PixiAnalogStick extends PIXI.Container {
     this.removeAllListeners();
   }
 
-  _resetStick() {
+  reset() {
     this._touchId = null;
     this._isDragging = false;
 
     this._stick.x = 0;
     this._stick.y = 0;
+  }
 
+  _release() {
+    this.reset();
     this.emit(PUBLIC_EVENT_NAME.RELEASE);
   }
 
@@ -143,7 +144,7 @@ class PixiAnalogStick extends PIXI.Container {
       return;
     }
 
-    this._resetStick();
+    this._release();
   };
 
   _onTouchEndOutside = (event) => {
@@ -157,7 +158,7 @@ class PixiAnalogStick extends PIXI.Container {
       return;
     }
 
-    this._resetStick();
+    this._release();
   };
 
   _checkEvent(event) {
