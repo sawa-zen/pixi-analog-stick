@@ -23,13 +23,9 @@ class PixiAnalogStick extends PIXI.Container {
   constructor() {
     super();
 
-    // 半径
     this._radius = 60;
-    // スティクの半径
     this._stickRadius = 30;
-    // ドラッグ中かどうか
     this._isDragging = false;
-    // スタートポジション
     this._startPosX = 0;
     this._startPosY = 0;
 
@@ -37,7 +33,6 @@ class PixiAnalogStick extends PIXI.Container {
     this.height = 300;
     this.interactive = true;
 
-    // タップエリア
     this._tapArea = new PIXI.Graphics();
     this._tapArea.beginFill(0xff0000);
     this._tapArea.drawRect(-250, -250, 500, 500);
@@ -46,7 +41,6 @@ class PixiAnalogStick extends PIXI.Container {
     this._tapArea.interactive = true;
     this.addChild(this._tapArea);
 
-    // 背景
     this._bg = new PIXI.Graphics();
     this._bg.beginFill(0xabafb8);
     this._bg.drawCircle(0, 0, this._radius);
@@ -55,7 +49,6 @@ class PixiAnalogStick extends PIXI.Container {
     this._bg.buttonMode = true;
     this.addChild(this._bg);
 
-    // スティック
     this._stick = new PIXI.Graphics();
     this._stick.beginFill(0x333333);
     this._stick.drawCircle(0, 0, this._stickRadius);
@@ -76,9 +69,6 @@ class PixiAnalogStick extends PIXI.Container {
     this.on(EVENT_NAME.TOUCH_END_OUTSIDE, this._onTouchEndOutside);
   }
 
-  /**
-   * 破棄します。
-   */
   dispose() {
     if(this._stick) {
       this._stick.removeAllListeners();
@@ -91,28 +81,17 @@ class PixiAnalogStick extends PIXI.Container {
     this.removeAllListeners();
   }
 
-  /**
-   * スティックをもとに戻す
-   */
   _resetStick() {
-
-    // ドラッグフラグを折る
     this._touchId = null;
     this._isDragging = false;
 
-    // スティックをもとの位置に戻す
     this._stick.x = 0;
     this._stick.y = 0;
 
-    // リリースイベント発火
     this.emit(PUBLIC_EVENT_NAME.RELEASE);
   }
 
-  /**
-   * タッチスタート時のハンドラーです。
-   */
   _onTouchStart = (event) => {
-    // イベントのIDを保持
     this._touchId = event.data.identifier;
     this._isDragging = true;
 
@@ -121,11 +100,7 @@ class PixiAnalogStick extends PIXI.Container {
     this._startPosY = touchPos.y;
   };
 
-  /**
-   * タッチムーブ時のハンドラーです。
-   */
   _onTouchMove = (event) => {
-    // 有効なイベントでなければ処理しない
     if(!this._checkEvent(event)) {
       return;
     }
@@ -140,7 +115,6 @@ class PixiAnalogStick extends PIXI.Container {
     let vec = new Victor(x, y);
     let angle = vec.angle() * 180 / Math.PI;
 
-    // 枠外に出ていれば枠内に収める
     if(vec.length() > this._radius - this._stickRadius) {
       let v = vec.normalize().multiplyScalar(this._radius - this._stickRadius);
       this._stick.x = v.x;
@@ -150,7 +124,6 @@ class PixiAnalogStick extends PIXI.Container {
       this._stick.y = y;
     }
 
-    // ムーブイベントを発火
     this.emit(PUBLIC_EVENT_NAME.MOVE, {
       x: x,
       y: y,
@@ -159,13 +132,9 @@ class PixiAnalogStick extends PIXI.Container {
     });
   };
 
-  /**
-   * タッチエンド時のハンドラーです。
-   */
   _onTouchEnd = (event) => {
     event.stopPropagation();
 
-    // 有効なイベントでなければ処理しない
     if(!this._checkEvent(event)) {
       return;
     }
@@ -177,13 +146,9 @@ class PixiAnalogStick extends PIXI.Container {
     this._resetStick();
   };
 
-  /**
-   * タッチが枠を外れた際のハンドラーです。
-   */
   _onTouchEndOutside = (event) => {
     event.stopPropagation();
 
-    // 有効なイベントでなければ処理しない
     if(!this._checkEvent(event)) {
       return;
     }
@@ -195,15 +160,11 @@ class PixiAnalogStick extends PIXI.Container {
     this._resetStick();
   };
 
-  /**
-   * タッチイベントを続行できるか確認します。
-   */
   _checkEvent(event) {
     if(event.type.match(/mouse/)) {
       return true;
     }
 
-    // イベントIDが違っていれば処理しない
     if(this._touchId == event.data.identifier) {
       return true;
     }

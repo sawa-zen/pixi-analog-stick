@@ -16,7 +16,7 @@ $ npm install --save pixi-analog-stick
 import * as PIXI from 'pixi.js';
 import PixiAnalogStick from 'pixi-analog-stick';
 
-class AnalogStick extends PIXI.Container {
+class Container extends PIXI.Container {
   constructor() {
     super();
 
@@ -36,7 +36,7 @@ class AnalogStick extends PIXI.Container {
   };
 }
 
-export default AnalogStick;
+export default Container;
 ```
 
 ### Method
