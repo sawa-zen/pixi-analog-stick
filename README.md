@@ -4,6 +4,8 @@ The aim of the project is to create an easy to use analog stick library for PIXI
 
 ![capture](./capture.gif)
 
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 #### Install
 
 ```
@@ -49,7 +51,7 @@ export default Container;
 
   Use to remove events.
 
-- ** reset()
+- **reset()**
 
   Reset stick position.
 
