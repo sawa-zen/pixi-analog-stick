@@ -28,16 +28,16 @@
     "pixi.js": "^4.7.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "babelrc-rollup": "^3.0.0",
-    "pixi.js": "^4.7.1",
-    "rollup": "^0.58.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
+    "pixi.js": "^4.8.4",
+    "rollup": "^0.58.2",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-uglify": "^3.0.0"
   },
   "dependencies": {
