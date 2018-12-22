@@ -1,6 +1,6 @@
 {
   "name": "pixi-analog-stick",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "dist/pixi-analog-stick.js",
   "scripts": {
