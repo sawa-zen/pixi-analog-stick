@@ -24,13 +24,13 @@
   },
   "homepage": "https://github.com/sawa-zen/pixi-analog-stick#readme",
   "peerDependencies": {
-    "pixi.js": "^4.7.1"
+    "pixi.js": "^4.7.1 || ^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.4",
-    "pixi.js": "4.8.7",
+    "pixi.js": "6.1.3",
     "rollup": "1.12.0",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-commonjs": "9.3.4",
